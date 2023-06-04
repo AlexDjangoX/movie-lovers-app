@@ -4,21 +4,22 @@ import {
   Actors,
   MovieInformation,
   Movies,
-  NavBar,
+  Navbar,
   Profile,
 } from './components/index.js';
 
 import { CssBaseline } from '@mui/material';
 
-import useStyles from './styles';
+import useStyles from './styles.js';
 
 const App = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <CssBaseline />
+
       <Router>
-        <NavBar />
+        <Navbar />
         <main className={classes.content}>
           <div className={classes.toolbar} />
           <Routes>

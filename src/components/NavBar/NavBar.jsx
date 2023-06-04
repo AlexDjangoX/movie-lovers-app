@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import {
   AppBar,
   IconButton,
@@ -16,9 +18,10 @@ import {
 import { useTheme } from '@mui/material/styles';
 import useStyles from './styles.js';
 
-import { NavLink } from 'react-router-dom';
+import { Sidebar } from '../index.js';
 
-const NavBar = () => {
+const Navbar = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
   const classes = useStyles();
   const isMobile = useMediaQuery('(max-width:600px)');
   const theme = useTheme();
@@ -26,7 +29,7 @@ const NavBar = () => {
   const buttonClicked = () => {
     console.log('Button has been clicked and navigation happened');
   };
-  console.log('Navbar');
+
   return (
     <>
       <AppBar position="fixed">
@@ -36,7 +39,7 @@ const NavBar = () => {
               color="inherit"
               edge="start"
               style={{ outline: 'none' }}
-              onClick={() => {}}
+              onClick={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)}
               className={classes.menuButton}
             >
               <Menu />
@@ -68,8 +71,33 @@ const NavBar = () => {
           {isMobile && 'Search...'}
         </Toolbar>
       </AppBar>
+      <div>
+        <nav className={classes.drawer}>
+          {isMobile ? (
+            <Drawer
+              variant="temporary"
+              anchor="right"
+              open={mobileOpen}
+              onClose={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)}
+              classes={{ paper: classes.drawerPaper }}
+              ModalProps={{ keepMounted: true }}
+            >
+              <Sidebar setMobileOpen={setMobileOpen} />
+            </Drawer>
+          ) : (
+            <Drawer
+              setMobileOpen={setMobileOpen}
+              classes={{ paper: classes.drawerPaper }}
+              variant="permanent"
+              open
+            >
+              <Sidebar />
+            </Drawer>
+          )}
+        </nav>
+      </div>
     </>
   );
 };
 
-export default NavBar;
+export default Navbar;
