@@ -29,6 +29,7 @@ export default makeStyles((theme) => ({
   },
   drawerPaper: { width: drawerWidth },
   linkButton: {
+    color: '#D3D3D3',
     '&:hover': {
       color: 'white !important',
       textDecoration: 'none',

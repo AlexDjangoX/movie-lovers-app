@@ -3,19 +3,19 @@ import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import Navbar from './Navbar';
+import Movies from './Movies';
 import store from '../../app/store.js';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-function testNavbarComponent() {
+function testMoviesComponent() {
   it('renders without crashing', () => {
     const theme = createTheme();
     const { container } = render(
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <MemoryRouter initialEntries={['/']}>
-            <Navbar />
+            <Movies />
           </MemoryRouter>
         </ThemeProvider>
       </Provider>
@@ -24,4 +24,4 @@ function testNavbarComponent() {
   });
 }
 
-describe('Navbar component', testNavbarComponent);
+describe('Movies component', testMoviesComponent);

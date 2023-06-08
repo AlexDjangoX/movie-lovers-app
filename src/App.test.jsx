@@ -1,15 +1,21 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import App from './App.jsx';
+import { Provider } from 'react-redux';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import App from './App.jsx';
+import store from '../src/app/store.js';
 
 function testAppComponent() {
   it.skip('renders the greeting correctly', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
-        <App />
+        <Provider store={store}>
+          <ThemeProvider theme={createTheme()}>
+            <App />
+          </ThemeProvider>
+        </Provider>
       </MemoryRouter>
     );
 
@@ -18,13 +24,14 @@ function testAppComponent() {
   });
 
   it('renders without crashing', () => {
-    const theme = createTheme();
-    const { container } = render(
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
+    render(
+      <Provider store={store}>
+        <ThemeProvider theme={createTheme()}>
+          <App />
+        </ThemeProvider>
+      </Provider>
     );
-    expect(container).toBeInTheDocument();
+    expect(screen.getByTestId('app-component')).toBeInTheDocument();
   });
 }
 

@@ -12,6 +12,9 @@ import {
 import { useTheme } from '@mui/styles';
 import useStyles from './styles.js';
 
+import genreIcons from '../../assets/genres/index.js';
+import { useGetGenresQuery } from '../../services/TMDB.js';
+
 const categories = [
   {
     label: 'Popular',
@@ -27,25 +30,6 @@ const categories = [
   },
 ];
 
-const demoCategories = [
-  {
-    label: 'Comedy',
-    value: 'comedy',
-  },
-  {
-    label: 'Action',
-    value: 'action',
-  },
-  {
-    label: 'Horror',
-    value: 'horror',
-  },
-  {
-    label: 'Anime',
-    value: 'anime',
-  },
-];
-
 const redLogo =
   'https://fontmeme.com/permalink/210930/8531c658a743debe1e1aa1a2fc82006e.png';
 
@@ -55,6 +39,9 @@ const blueLogo =
 const Sidebar = ({ setMobileOpen }) => {
   const theme = useTheme();
   const classes = useStyles();
+  const { data, isFetching } = useGetGenresQuery();
+
+  console.log(data?.genres);
 
   return (
     <>
@@ -71,13 +58,13 @@ const Sidebar = ({ setMobileOpen }) => {
         {categories.map(({ label, value }) => (
           <NavLink key={value} className={classes.link} to="/">
             <ListItem onClick={() => {}} button>
-              {/* <ListItemIcon>
+              <ListItemIcon>
                 <img
-                  src={redLogo}
+                  src={genreIcons[label.toLowerCase()]}
                   className={classes.genreImages}
                   height={30}
                 />
-              </ListItemIcon> */}
+              </ListItemIcon>
               <ListItemText primary={label} />
             </ListItem>
           </NavLink>
@@ -86,20 +73,28 @@ const Sidebar = ({ setMobileOpen }) => {
       <Divider />
       <List>
         <ListSubheader>Genre</ListSubheader>
-        {demoCategories.map(({ label, value }) => (
-          <NavLink key={value} className={classes.link} to="/">
-            <ListItem onClick={() => {}} button>
-              {/* <ListItemIcon>
-                <img
-                  src={redLogo}
-                  className={classes.genreImages}
-                  height={30}
-                />
-              </ListItemIcon> */}
-              <ListItemText primary={label} />
-            </ListItem>
-          </NavLink>
-        ))}
+        {isFetching ? (
+          <>
+            <Box display="flex" justifyContent="center">
+              <CircularProgress size="4rem" />
+            </Box>
+          </>
+        ) : (
+          data.genres.map(({ name, id }) => (
+            <NavLink key={name} className={classes.link} to="/">
+              <ListItem onClick={() => {}} button>
+                <ListItemIcon>
+                  <img
+                    src={genreIcons[name.toLowerCase()]}
+                    className={classes.genreImages}
+                    height={30}
+                  />
+                </ListItemIcon>
+                <ListItemText primary={name} />
+              </ListItem>
+            </NavLink>
+          ))
+        )}
       </List>
     </>
   );
