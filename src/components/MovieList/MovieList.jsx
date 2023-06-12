@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Grid } from '@mui/material';
 
 import useStyles from './styles';
@@ -13,6 +14,10 @@ const MovieList = ({ movies }) => {
       ))}
     </Grid>
   );
+};
+
+MovieList.propTypes = {
+  movies: PropTypes.object.isRequired,
 };
 
 export default MovieList;

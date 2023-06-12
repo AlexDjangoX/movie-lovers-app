@@ -1,5 +1,4 @@
 const MovieInformation = () => {
-  console.log('Movie');
   return <div>MovieInformation</div>;
 };
 

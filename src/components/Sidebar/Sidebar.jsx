@@ -14,6 +14,9 @@ import useStyles from './styles.js';
 
 import genreIcons from '../../assets/genres/index.js';
 import { useGetGenresQuery } from '../../services/TMDB.js';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { selectGenreOrCategory } from '../../features/currentGenreOrCategory.js';
 
 const categories = [
   {
@@ -36,12 +39,11 @@ const redLogo =
 const blueLogo =
   'https://fontmeme.com/permalink/210930/6854ae5c7f76597cf8680e48a2c8a50a.png';
 
-const Sidebar = ({ setMobileOpen }) => {
+const Sidebar = () => {
   const theme = useTheme();
   const classes = useStyles();
   const { data, isFetching } = useGetGenresQuery();
-
-  console.log(data?.genres);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -57,7 +59,7 @@ const Sidebar = ({ setMobileOpen }) => {
         <ListSubheader>Categories</ListSubheader>
         {categories.map(({ label, value }) => (
           <NavLink key={value} className={classes.link} to="/">
-            <ListItem onClick={() => {}} button>
+            <ListItem onClick={() => dispatch(selectGenreOrCategory(value))}>
               <ListItemIcon>
                 <img
                   src={genreIcons[label.toLowerCase()]}
@@ -82,7 +84,7 @@ const Sidebar = ({ setMobileOpen }) => {
         ) : (
           data.genres.map(({ name, id }) => (
             <NavLink key={name} className={classes.link} to="/">
-              <ListItem onClick={() => {}} button>
+              <ListItem onClick={() => dispatch(selectGenreOrCategory(id))}>
                 <ListItemIcon>
                   <img
                     src={genreIcons[name.toLowerCase()]}

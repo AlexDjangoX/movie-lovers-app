@@ -6,7 +6,6 @@ import { NavLink } from 'react-router-dom';
 
 const Movie = ({ movie, index }) => {
   const classes = useStyles();
-  console.log(movie, index);
 
   return (
     <Grid item xs={12} sm={6} md={4} lg={3} xl={2} className={classes.movie}>
@@ -38,7 +37,7 @@ const Movie = ({ movie, index }) => {
 Movie.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string,
-    id: PropTypes.string,
+    id: PropTypes.number,
     poster_path: PropTypes.string,
     vote_average: PropTypes.number,
   }).isRequired,
