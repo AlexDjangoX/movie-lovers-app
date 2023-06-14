@@ -48,14 +48,12 @@ const Navbar = () => {
           const { data: userData } = await moviesApi.get(
             `/account?session_id=${session}`
           );
-          console.log(userData);
           dispatch(setUser(userData));
         } else {
           const thisSessionId = await createSessionId();
           const { data: userData } = await moviesApi.get(
             `/account?session_id=${thisSessionId}`
           );
-          console.log(userData);
           dispatch(setUser(userData));
         }
       }
@@ -101,7 +99,10 @@ const Navbar = () => {
                 <AccountCircle />
               </Button>
             ) : (
-              <NavLink to={`/profile/:id`} className={classes.linkButton}>
+              <NavLink
+                to={`/profile/${user.id}`}
+                className={classes.linkButton}
+              >
                 <Button color="inherit" onClick={buttonClicked}>
                   {!isMobile && <>My Movies &nbsp;</>}
                   <Avatar

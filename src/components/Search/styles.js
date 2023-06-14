@@ -5,7 +5,7 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'flex',
       justifyContent: 'center',
-      width: '100%',
+      width: '45%',
     },
   },
   input: {

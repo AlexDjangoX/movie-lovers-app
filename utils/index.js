@@ -28,7 +28,6 @@ export const fetchToken = async () => {
       localStorage.setItem('request_token', REQUEST_TOKEN);
       window.location.href = `https://www.themoviedb.org/authenticate/${REQUEST_TOKEN}?redirect_to=${window.location.origin}/approved`;
     }
-    console.log(data);
   } catch (error) {
     console.error('Unable to fetch new token', error);
     throw new Error(error);
@@ -36,7 +35,6 @@ export const fetchToken = async () => {
 };
 
 export const createSessionId = async () => {
-  console.log('Do we get here?');
   try {
     const requestToken = localStorage.getItem('request_token');
     if (!requestToken) {
@@ -57,8 +55,6 @@ export const createSessionId = async () => {
     if (data.success) {
       const session_id = data.session_id;
       localStorage.setItem('session_id', session_id);
-      console.log('Here is session_id', session_id);
-      console.log(session_id);
       return session_id;
     } else {
       throw new Error('Failed to fetch session');
