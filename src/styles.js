@@ -11,6 +11,5 @@ export default makeStyles(() => ({
   content: {
     flexGrow: 1,
     padding: '2em',
-    backgroundColor: '#D3D3D3',
   },
 }));
