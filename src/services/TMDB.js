@@ -2,7 +2,6 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const tmdbApiKey = import.meta.env.VITE_API_KEY;
 const baseUrl = import.meta.env.VITE_BASE_URL;
-const page = 1;
 
 export const tmdbApi = createApi({
   reducerPath: 'tmdbApi',
@@ -42,8 +41,29 @@ export const tmdbApi = createApi({
         return `movie/${id}?append_to_response=videos,credits&api_key=${tmdbApiKey}`;
       },
     }),
+
+    getRecommendations: builder.query({
+      query: ({ movie_id, list }) => {
+        return `movie/${movie_id}/${list}?api_key=${tmdbApiKey}`;
+      },
+    }),
+    getActorDetails: builder.query({
+      query: (id) => {
+        return `person/${id}?api_key=${tmdbApiKey}`;
+      },
+    }),
+    getMoviesByActorId: builder.query({
+      query: (id, page) =>
+        `/discover/movie?with_cast=${id}&page=${page}&api_key=${tmdbApiKey}`,
+    }),
   }),
 });
 
-export const { useGetMoviesQuery, useGetGenresQuery, useGetMovieQuery } =
-  tmdbApi;
+export const {
+  useGetMoviesQuery,
+  useGetGenresQuery,
+  useGetMovieQuery,
+  useGetRecommendationsQuery,
+  useGetActorDetailsQuery,
+  useGetMoviesByActorIdQuery,
+} = tmdbApi;
