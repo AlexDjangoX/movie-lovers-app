@@ -33,7 +33,7 @@ export default makeStyles((theme) => ({
   link: {
     fontWeight: 'lighter',
     textDecoration: 'underline',
-    marginTop: '1rem',
+    marginTop: '2rem',
     color: 'black',
     fontSize: '1.4rem',
     '&:hover': {

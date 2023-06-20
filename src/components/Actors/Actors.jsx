@@ -4,12 +4,11 @@ import {
   Typography,
   Modal,
   Button,
-  ButtonGroup,
   Grid,
   Box,
   CircularProgress,
-  Rating,
 } from '@mui/material';
+import { ArrowBack } from '@mui/icons-material';
 import {
   useGetActorDetailsQuery,
   useGetMoviesByActorIdQuery,
@@ -26,7 +25,6 @@ const Actors = () => {
 
   const [modalOpen, setModalOpen] = useState(false);
 
-  const shouldDisplayLink = data?.homepage?.startsWith('https');
   const biography = data?.biography;
   const shortBiography =
     biography?.length > 600
@@ -54,7 +52,9 @@ const Actors = () => {
       </Box>
     );
   }
-
+  console.log(data?.homepage);
+  console.log('data:', data);
+  console.log('data.homepage:', data?.homepage);
   return (
     <>
       <Grid container item className={classes.imageTextContainer}>
@@ -69,16 +69,15 @@ const Actors = () => {
             src={`https://image.tmdb.org/t/p/w500/${data?.profile_path}`}
             alt={data?.name}
           />
-          {shouldDisplayLink && (
-            <a
-              href={data.homepage}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={classes.link}
-            >
-              {data?.name}
-            </a>
-          )}
+
+          <a
+            href={data.homepage}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={classes.link}
+          >
+            {data?.name}
+          </a>
         </Grid>
 
         <Grid item container direction="column" lg={7}>
@@ -92,9 +91,48 @@ const Actors = () => {
           <Typography className={classes.biography} variant="subtitle1">
             {shortBiography}
           </Typography>
-          {biography?.length > 600 && (
-            <Button onClick={() => setModalOpen(true)}>Read More</Button>
-          )}
+          <Box
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'baseline',
+              marginTop: '10px',
+            }}
+          >
+            <Button
+              variant="contained"
+              color="primary"
+              href={`https://www.imdb.com/name/${data?.imdb_id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ marginTop: '10px', width: '20%' }}
+            >
+              IMDB
+            </Button>
+            {biography?.length > 600 && (
+              <Button
+                style={{ marginTop: '10px', marginBottom: '10px' }}
+                onClick={() => setModalOpen(true)}
+              >
+                Read More
+              </Button>
+            )}
+            <Button
+              endIcon={<ArrowBack />}
+              sx={{ borderColor: 'primary.main' }}
+              style={{ marginTop: '10px' }}
+            >
+              <Typography
+                component={Link}
+                to="/"
+                color="inherit"
+                variant="subtitle2"
+                style={{ textDecoration: 'none' }}
+              >
+                Back
+              </Typography>
+            </Button>
+          </Box>
           <Modal
             open={modalOpen}
             onClose={() => setModalOpen(false)}
