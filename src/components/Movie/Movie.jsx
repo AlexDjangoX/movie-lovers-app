@@ -35,6 +35,7 @@ const Movie = ({ movie, index }) => {
 };
 
 Movie.propTypes = {
+  index: PropTypes.number.isRequired,
   movie: PropTypes.shape({
     title: PropTypes.string,
     id: PropTypes.number,

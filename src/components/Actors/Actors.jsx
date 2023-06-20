@@ -52,9 +52,7 @@ const Actors = () => {
       </Box>
     );
   }
-  console.log(data?.homepage);
-  console.log('data:', data);
-  console.log('data.homepage:', data?.homepage);
+
   return (
     <>
       <Grid container item className={classes.imageTextContainer}>

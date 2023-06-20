@@ -36,6 +36,11 @@ export const tmdbApi = createApi({
       },
     }),
 
+    getList: builder.query({
+      query: ({ listName, accountId, sessionId, page }) =>
+        `/account/${accountId}/${listName}?api_key=${tmdbApiKey}&session_id=${sessionId}&page=${page}`,
+    }),
+
     getMovie: builder.query({
       query: (id) => {
         return `movie/${id}?append_to_response=videos,credits&api_key=${tmdbApiKey}`;
@@ -60,6 +65,7 @@ export const tmdbApi = createApi({
 });
 
 export const {
+  useGetListQuery,
   useGetMoviesQuery,
   useGetGenresQuery,
   useGetMovieQuery,

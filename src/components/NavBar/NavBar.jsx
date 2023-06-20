@@ -65,7 +65,7 @@ const Navbar = () => {
   }, [token]);
 
   const buttonClicked = () => {
-    console.log('Button has been clicked and navigation happened');
+    return;
   };
 
   return (
