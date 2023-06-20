@@ -18,9 +18,14 @@ const App = () => {
       <CssBaseline />
 
       <Helmet>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        <link rel="icon" href={metadata.icons.icon} />
+        <meta property="og:title" content={metadata.title} />
+        <meta property="og:description" content={metadata.description} />
+        <meta property="og:image" content={metadata.icons.icon} />
+        <meta property="og:url" content={window.location.href} />
+        <meta name="twitter:title" content={metadata.title} />
+        <meta name="twitter:description" content={metadata.description} />
+        <meta name="twitter:image" content={metadata.icons.icon} />
+        <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
       <Router>
