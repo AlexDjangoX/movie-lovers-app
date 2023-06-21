@@ -137,7 +137,7 @@ const MovieInformation = () => {
     );
   }
 
-  if (error || errorRecommendations || errorFavorites || errorWatchlist) {
+  if (error || errorRecommendations) {
     return (
       <Box display={'flex'} justifyContent={'center'}>
         <Link to="/">Go back</Link>
