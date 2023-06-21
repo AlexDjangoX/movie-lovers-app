@@ -28,7 +28,7 @@ import {
 } from '../../../utils/index.js';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { setUser } from '../../features/auth';
+import { setUser } from '../../features/auth.js';
 
 import { ColorModeContext } from '../../../utils/ToggleColorMode.jsx';
 

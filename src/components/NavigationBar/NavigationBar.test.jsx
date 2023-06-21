@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import NavigationBar from './NavigationBar.jsx';
 import store from '../../app/store.js';
 
-import ToggleColorMode from '../../../utils/ToggleColorMode';
+import ToggleColorMode from '../../../utils/ToggleColorMode.jsx';
 function testNavbarComponent() {
   it('renders without crashing', () => {
     const { container } = render(
