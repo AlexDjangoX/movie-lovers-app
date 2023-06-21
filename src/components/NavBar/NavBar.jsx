@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
   AppBar,
@@ -29,7 +29,11 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../../features/auth';
 
+import { ColorModeContext } from '../../../utils/ToggleColorMode.jsx';
+
 const Navbar = () => {
+  const { toggleColorMode } = useContext(ColorModeContext);
+
   const { isAuthenticated, user } = useSelector((state) => state.userSlice);
   const [mobileOpen, setMobileOpen] = useState(false);
   const classes = useStyles();
@@ -83,7 +87,7 @@ const Navbar = () => {
               <Menu />
             </IconButton>
           )}
-          <IconButton color="inherit" sx={{ ml: 1 }} onClick={() => {}}>
+          <IconButton color="inherit" sx={{ ml: 1 }} onClick={toggleColorMode}>
             {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
           </IconButton>
           {!isMobile && <Search />}

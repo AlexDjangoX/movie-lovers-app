@@ -14,7 +14,7 @@ import {
   useGetMoviesByActorIdQuery,
 } from '../../services/TMDB';
 
-import { MovieList } from '..';
+import { MovieList, Pagination } from '..';
 
 import useStyles from './styles';
 
@@ -24,6 +24,7 @@ const Actors = () => {
   const { data, error, isFetching } = useGetActorDetailsQuery(id);
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [page, setPage] = useState(1);
 
   const biography = data?.biography;
   const shortBiography =
@@ -35,7 +36,7 @@ const Actors = () => {
     data: movies,
     error: errorMovies,
     isFetching: isFetchingMovies,
-  } = useGetMoviesByActorIdQuery(id);
+  } = useGetMoviesByActorIdQuery({ page, id });
 
   if (error || errorMovies) {
     return (
@@ -57,6 +58,7 @@ const Actors = () => {
     <>
       <Grid container item className={classes.imageTextContainer}>
         <Grid
+          container
           item
           sm={4}
           className={classes.imageContainer}
@@ -153,6 +155,11 @@ const Actors = () => {
             </Box>
           )}
         </Box>
+        <Pagination
+          currentPage={page}
+          totalPages={movies?.total_pages}
+          setPage={setPage}
+        />
       </Grid>
     </>
   );

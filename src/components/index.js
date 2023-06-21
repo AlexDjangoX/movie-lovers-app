@@ -7,4 +7,5 @@ export { default as Navbar } from './Navbar/Navbar';
 export { default as MovieList } from './MovieList/MovieList';
 export { default as Movie } from './Movie/Movie';
 export { default as RatedCards } from './RatedCards/RatedCards';
+export { default as Pagination } from './Pagination/Pagination';
 export { default as Search } from './Search/Search';

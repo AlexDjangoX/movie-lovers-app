@@ -2,19 +2,20 @@ import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import App from './App.jsx';
 import store from '../src/app/store.js';
+
+import ToggleColorMode from '../utils/ToggleColorMode.jsx';
 
 function testAppComponent() {
   it.skip('renders the greeting correctly', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
         <Provider store={store}>
-          <ThemeProvider theme={createTheme()}>
+          <ToggleColorMode>
             <App />
-          </ThemeProvider>
+          </ToggleColorMode>
         </Provider>
       </MemoryRouter>
     );
@@ -26,9 +27,9 @@ function testAppComponent() {
   it('renders without crashing', () => {
     render(
       <Provider store={store}>
-        <ThemeProvider theme={createTheme()}>
+        <ToggleColorMode>
           <App />
-        </ThemeProvider>
+        </ToggleColorMode>
       </Provider>
     );
     expect(screen.getByTestId('app-component')).toBeInTheDocument();

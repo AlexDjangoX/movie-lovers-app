@@ -2,22 +2,21 @@ import { describe, test, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import Sidebar from './Sidebar';
 import store from '../../app/store.js';
 
+import ToggleColorMode from '../../../utils/ToggleColorMode';
+
 describe('Sidebar component', () => {
   test('should render Filmpire Logo', () => {
-    const theme = createTheme();
-
     render(
       <Provider store={store}>
-        <ThemeProvider theme={theme}>
+        <ToggleColorMode>
           <MemoryRouter initialEntries={['/']}>
             <Sidebar />
           </MemoryRouter>
-        </ThemeProvider>
+        </ToggleColorMode>
       </Provider>
     );
 
