@@ -32,7 +32,7 @@ import { setUser } from '../../features/auth';
 
 import { ColorModeContext } from '../../../utils/ToggleColorMode.jsx';
 
-const Navbar = () => {
+const NavigationBar = () => {
   const { toggleColorMode } = useContext(ColorModeContext);
 
   const { isAuthenticated, user } = useSelector((state) => state.userSlice);
@@ -151,4 +151,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavigationBar;

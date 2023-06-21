@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import Sidebar from './Sidebar';
+import Sidebar from './Sidebar.jsx';
 import store from '../../app/store.js';
 
 import ToggleColorMode from '../../../utils/ToggleColorMode';

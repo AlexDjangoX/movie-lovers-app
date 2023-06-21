@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import Navbar from './Navbar';
+import NavigationBar from './NavigationBar.jsx';
 import store from '../../app/store.js';
 
 import ToggleColorMode from '../../../utils/ToggleColorMode';
@@ -13,7 +13,7 @@ function testNavbarComponent() {
       <Provider store={store}>
         <ToggleColorMode>
           <MemoryRouter initialEntries={['/']}>
-            <Navbar />
+            <NavigationBar />
           </MemoryRouter>
         </ToggleColorMode>
       </Provider>
@@ -22,4 +22,4 @@ function testNavbarComponent() {
   });
 }
 
-describe('Navbar component', testNavbarComponent);
+describe('NavigationBar component', testNavbarComponent);

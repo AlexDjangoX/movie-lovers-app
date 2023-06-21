@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import Movies from './Movies';
+import Movies from './Movies.jsx';
 import store from '../../app/store.js';
 
 import ToggleColorMode from '../../../utils/ToggleColorMode';

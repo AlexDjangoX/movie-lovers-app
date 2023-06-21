@@ -5,7 +5,7 @@ import Actors from './components/Actors/Actors.jsx';
 import MovieInformation from './components/MovieInformation/MovieInformation.jsx';
 import Movies from './components/Movies/Movies.jsx';
 import Profile from './components/Profile/Profile.jsx';
-import Navbar from './components/Navbar/Navbar.jsx';
+import NavigationBar from './components/NavigationBar/NavigationBar.jsx';
 
 import { CssBaseline } from '@mui/material';
 import useStyles from './styles.js';
@@ -29,7 +29,7 @@ const App = () => {
       </Helmet>
 
       <Router>
-        <Navbar />
+        <NavigationBar />
         <main className={classes.content}>
           <div className={classes.toolbar} />
           <Routes>
