@@ -16,7 +16,6 @@ const Pagination = ({ currentPage, setPage, totalPages }) => {
     }
   };
 
-  console.log(totalPages);
   const handleNext = () => {
     if (currentPage < totalPages) {
       setPage((prevPage) => prevPage + 1);
