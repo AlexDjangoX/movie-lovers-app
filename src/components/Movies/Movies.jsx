@@ -7,7 +7,9 @@ import {
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { useGetMoviesQuery } from '../../services/TMDB';
-import { MovieList, Pagination } from '..';
+
+import MovieList from '../MovieList/MovieList.jsx';
+import Pagination from '../Pagination/Pagination.jsx';
 
 const Movies = () => {
   const [page, setPage] = useState(1);

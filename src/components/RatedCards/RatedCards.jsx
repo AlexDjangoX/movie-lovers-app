@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Typography, Box } from '@mui/material';
 import useStyles from './styles';
 
-import { Movie } from '../index';
+import Movie from '../Movie/Movie.jsx';
 
 const RatedCards = ({ title, movies }) => {
   const classes = useStyles();

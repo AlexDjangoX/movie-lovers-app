@@ -1,12 +1,12 @@
 import { Helmet } from 'react-helmet';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import {
-  Actors,
-  MovieInformation,
-  Movies,
-  Navbar,
-  Profile,
-} from './components/index.js';
+
+import Actors from './components/Actors/Actors.jsx';
+import MovieInformation from './components/MovieInformation/MovieInformation.jsx';
+import Movies from './components/Movies/Movies.jsx';
+import Profile from './components/Profile/Profile.jsx';
+import Navbar from './components/Navbar/Navbar.jsx';
+
 import { CssBaseline } from '@mui/material';
 import useStyles from './styles.js';
 import { metadata } from './metadata.js';

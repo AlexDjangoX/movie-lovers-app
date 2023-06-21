@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 import { useGetListQuery } from '../../services/TMDB';
 
-import { RatedCards } from '../index.js';
+import RatedCards from '../RatedCards/RatedCards.jsx';
 
 const Profile = () => {
   const { user } = useSelector((state) => state.userSlice);

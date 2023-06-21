@@ -28,10 +28,11 @@ import {
   useGetListQuery,
 } from '../../services/TMDB';
 import { selectGenreOrCategory } from '../../features/currentGenreOrCategory.js';
-import { MovieList } from '..';
+
 import genreIcons from '../../assets/genres/index.js';
 import useStyles from './styles';
 
+import MovieList from '../MovieList/MovieList';
 import axios from 'axios';
 
 const tmdbApiKey = import.meta.env.VITE_API_KEY;

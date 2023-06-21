@@ -9,12 +9,11 @@ import {
   Box,
   CircularProgress,
 } from '@mui/material';
-import { useTheme } from '@mui/styles';
 import useStyles from './styles.js';
 
 import genreIcons from '../../assets/genres/index.js';
 import { useGetGenresQuery } from '../../services/TMDB.js';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { selectGenreOrCategory } from '../../features/currentGenreOrCategory.js';
 

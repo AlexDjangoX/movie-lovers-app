@@ -18,7 +18,8 @@ import {
 import { useTheme } from '@mui/material/styles';
 import useStyles from './styles.js';
 
-import { Sidebar, Search } from '../index.js';
+import Search from '../Search/Search.jsx';
+import Sidebar from '../Sidebar/Sidebar.jsx';
 
 import {
   fetchToken,

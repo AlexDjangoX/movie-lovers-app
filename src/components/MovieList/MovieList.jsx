@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Grid } from '@mui/material';
 
 import useStyles from './styles';
-import { Movie } from '..';
+import Movie from '../Movie/Movie.jsx';
 
 const MovieList = ({ movies, numberOfMovies }) => {
   const classes = useStyles();
