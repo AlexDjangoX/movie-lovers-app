@@ -8,11 +8,9 @@ import store from './app/store.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <ToggleColorMode>
-        <App />
-      </ToggleColorMode>
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <ToggleColorMode>
+      <App />
+    </ToggleColorMode>
+  </Provider>
 );
