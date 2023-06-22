@@ -20,8 +20,9 @@ export default makeStyles((theme) => ({
       height: '90%',
     },
     [theme.breakpoints.down('sm')]: {
+      marginTop: '40px',
       margin: '0 auto',
-      width: '100%',
+      width: '75%',
       height: '350px',
       marginBottom: '30px',
     },
