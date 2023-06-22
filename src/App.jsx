@@ -12,13 +12,13 @@ import { CssBaseline } from '@mui/material';
 import useStyles from './styles.js';
 import { metadata } from './metadata.js';
 
-import useAlan from './Alan.jsx';
+// import useAlan from './Alan.jsx';
 
 const App = () => {
-  const alanButtonContainer = useRef();
+  // const alanButtonContainer = useRef();
   const classes = useStyles();
 
-  useAlan();
+  // useAlan();
 
   return (
     <div className={classes.root} data-testid="app-component">
@@ -48,7 +48,7 @@ const App = () => {
           </Routes>
         </main>
       </Router>
-      <div ref={alanButtonContainer} />
+      {/* <div ref={alanButtonContainer} /> */}
     </div>
   );
 };

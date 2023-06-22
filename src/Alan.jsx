@@ -21,6 +21,7 @@ const useAlan = () => {
           const foundGenre = genres.find(
             (g) => g.name.toLowerCase() === genreOrCategory.toLowerCase()
           );
+
           if (foundGenre) {
             window.location.href = '/';
             dispatch(selectGenreOrCategory(foundGenre.id));
@@ -32,7 +33,6 @@ const useAlan = () => {
             dispatch(selectGenreOrCategory(category));
           }
         } else if (command === 'changeMode') {
-          console.log('We are here!');
           if (mode === 'light') {
             setMode('light');
           } else {
