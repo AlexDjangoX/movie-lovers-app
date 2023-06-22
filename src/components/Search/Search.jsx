@@ -22,9 +22,10 @@ const Search = () => {
   return (
     <div className={classes.searchContainer}>
       <TextField
+        placeholder="Search movies"
+        onKeyPress={handleKeyPress}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        onKeyPress={() => handleKeyPress(event)}
         variant="standard"
         InputProps={{
           className: classes.input,

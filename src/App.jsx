@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -11,8 +12,14 @@ import { CssBaseline } from '@mui/material';
 import useStyles from './styles.js';
 import { metadata } from './metadata.js';
 
+import useAlan from './Alan.jsx';
+
 const App = () => {
+  const alanButtonContainer = useRef();
   const classes = useStyles();
+
+  useAlan();
+
   return (
     <div className={classes.root} data-testid="app-component">
       <CssBaseline />
@@ -41,6 +48,7 @@ const App = () => {
           </Routes>
         </main>
       </Router>
+      <div ref={alanButtonContainer} />
     </div>
   );
 };
